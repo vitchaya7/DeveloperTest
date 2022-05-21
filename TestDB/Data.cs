@@ -13,24 +13,29 @@ namespace TestDB
         {
             using (var db = new DBContext())
             {
-                //string[] name = new string[3];
-                //name[0] = "Lee:7:5:1890";
-                //name[1] = "Robert:10:7:1920";
-                //name[2] = "Kris:26:10:1944";
-                //foreach (string data in name)
-                //{
-                //    string[] nameSplit = data.Split(':');
-                //    var NameFamily = new NameIndex
-                //    {
-                //        Name = nameSplit[0],
-                //        Day = Int32.Parse(nameSplit[1]),
-                //        Month = Int32.Parse(nameSplit[2]),
-                //        Year = Int32.Parse(nameSplit[3])
+                Console.Write(" Add Value [1] or Read Value [2] : ");
+                var value = Console.ReadLine();
+                if (value.Equals("1"))
+                {
+                    string[] name = new string[3];
+                    name[0] = "Lee:7:5:1890";
+                    name[1] = "Robert:10:7:1920";
+                    name[2] = "Kris:26:10:1944";
+                    foreach (string data in name)
+                    {
+                        string[] nameSplit = data.Split(':');
+                        var NameFamily = new NameIndex
+                        {
+                            Name = nameSplit[0],
+                            Day = Int32.Parse(nameSplit[1]),
+                            Month = Int32.Parse(nameSplit[2]),
+                            Year = Int32.Parse(nameSplit[3])
 
-                //    };
-                //    db.NameIndexs.Add(NameFamily);
-                //    db.SaveChanges();
-                //}
+                        };
+                        db.NameIndexs.Add(NameFamily);
+                        db.SaveChanges();
+                    }
+                }              
                 var query = from b in db.NameIndexs
                             orderby b.Name
                             select b;
